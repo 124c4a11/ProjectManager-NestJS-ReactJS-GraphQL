@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Client {
+  email: String!
+  id: Int!
+  name: String!
+  phone: String!
+  projects: [Project!]
+}
+
+input CreateClientInput {
+  email: String!
+  name: String!
+  phone: String!
+}
+
+input CreateProjectInput {
+  clientId: Int!
+  description: String!
+  status: ProjectStatus
+}
+
+type Mutation {
+  createClient(createClientInput: CreateClientInput!): Client!
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  deleteClient(id: Float!): Client!
+  deleteProject(id: Float!): Project!
+  updateProject(updateProjectInput: UpdateProjectInput!): Project!
+}
+
+type Project {
+  client: Client!
+  clientId: Int!
+  description: String!
+  id: Int!
+  status: ProjectStatus!
+}
+
+enum ProjectStatus {
+  COMPLETE
+  IN_PROGRESS
+  NOT_STARTED
+}
+
+type Query {
+  client(id: Float!): Client!
+  clients: [Client!]!
+  project(id: Float!): Project!
+  projects: [Project!]!
+}
+
+input UpdateProjectInput {
+  clientId: Int
+  description: String
+  id: Int!
+  status: ProjectStatus
+}

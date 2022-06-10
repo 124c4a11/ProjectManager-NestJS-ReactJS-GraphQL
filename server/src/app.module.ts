@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { ClientsModule } from './clients/clients.module';
+import { ProjectsModule } from './projects/projects.module';
 
 @Module({
   imports: [
@@ -33,6 +35,8 @@ import { join } from 'path';
         logging: true,
       }),
     }),
+    ClientsModule,
+    ProjectsModule,
   ],
 })
 export class AppModule {}
