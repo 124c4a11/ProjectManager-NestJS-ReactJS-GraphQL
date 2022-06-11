@@ -1,7 +1,10 @@
+import { Header } from '../Header/Header';
+
 export function App() {
   return (
-    <div className="container">
-      <h1>Hello World!</h1>
-    </div>
+    <>
+      <Header />
+      <div className="container"></div>
+    </>
   );
 }
