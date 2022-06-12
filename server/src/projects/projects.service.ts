@@ -28,7 +28,9 @@ export class ProjectsService {
   async deleteOne(id: number): Promise<Project> {
     const project: Project = await this.findOne(id);
 
-    return await this.projectRepo.remove(project);
+    const deletedProject = await this.projectRepo.remove(project);
+
+    return { ...deletedProject, id };
   }
 
   async update(updateProjectInput: UpdateProjectInput): Promise<Project> {
