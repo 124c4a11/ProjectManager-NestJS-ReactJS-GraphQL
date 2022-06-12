@@ -1,18 +1,18 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
+import { Field, ID, InputType } from '@nestjs/graphql';
 import {
   IsString,
   IsEnum,
-  IsNumber,
   IsOptional,
   IsNotEmpty,
+  IsNumberString,
 } from 'class-validator';
 import { ProjectStatus } from '../entities/project.entity';
 
 @InputType()
 export class UpdateProjectInput {
-  @IsNumber()
+  @IsNumberString()
   @IsNotEmpty()
-  @Field(() => Int)
+  @Field(() => ID)
   readonly id: number;
 
   @IsString()

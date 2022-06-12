@@ -5,6 +5,7 @@ import {
   Query,
   ResolveField,
   Parent,
+  ID,
 } from '@nestjs/graphql';
 import { ClientsService } from 'src/clients/clients.service';
 import { Client } from 'src/clients/entities/client.entity';
@@ -28,7 +29,7 @@ export class ProjectsResolver {
   }
 
   @Query(() => Project, { name: 'project' })
-  findOne(@Args('id') id: number): Promise<Project> {
+  findOne(@Args({ name: 'id', type: () => ID }) id: number): Promise<Project> {
     return this.projectsService.findOne(id);
   }
 
@@ -43,7 +44,9 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => Project)
-  deleteProject(@Args('id') id: number): Promise<Project> {
+  deleteProject(
+    @Args({ name: 'id', type: () => ID }) id: number,
+  ): Promise<Project> {
     return this.projectsService.deleteOne(id);
   }
 

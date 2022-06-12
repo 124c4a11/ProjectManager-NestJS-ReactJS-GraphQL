@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
+import { Args, Mutation, Resolver, Query, ID } from '@nestjs/graphql';
 import { ClientsService } from './clients.service';
 import { CreateClientInput } from './dto/create-client.input';
 import { Client } from './entities/client.entity';
@@ -15,7 +15,7 @@ export class ClientsResolver {
   }
 
   @Query(() => Client, { name: 'client' })
-  findOne(@Args('id') id: number): Promise<Client> {
+  findOne(@Args({ name: 'id', type: () => ID }) id: number): Promise<Client> {
     return this.clientsService.findOne(id);
   }
 
@@ -25,7 +25,9 @@ export class ClientsResolver {
   }
 
   @Mutation(() => Client)
-  deleteClient(@Args('id') id: number): Promise<Client> {
+  deleteClient(
+    @Args({ name: 'id', type: () => ID }) id: number,
+  ): Promise<Client> {
     return this.clientsService.deleteOne(id);
   }
 }

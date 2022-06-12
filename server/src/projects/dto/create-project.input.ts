@@ -1,5 +1,5 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-import { IsEnum, IsNumber, IsString } from 'class-validator';
+import { Field, ID, InputType } from '@nestjs/graphql';
+import { IsEnum, IsNumberString, IsString } from 'class-validator';
 import { ProjectStatus } from '../entities/project.entity';
 
 @InputType()
@@ -12,7 +12,7 @@ export class CreateProjectInput {
   @Field(() => ProjectStatus, { nullable: true })
   readonly status: ProjectStatus;
 
-  @IsNumber()
-  @Field(() => Int)
+  @IsNumberString()
+  @Field(() => ID)
   readonly clientId: number;
 }

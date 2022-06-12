@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Client } from 'src/clients/entities/client.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -16,7 +16,7 @@ registerEnumType(ProjectStatus, {
 @ObjectType()
 export class Project {
   @PrimaryGeneratedColumn()
-  @Field(() => Int)
+  @Field(() => ID)
   id: number;
 
   @Column()
@@ -32,7 +32,7 @@ export class Project {
   status: ProjectStatus;
 
   @Column()
-  @Field(() => Int)
+  @Field(() => ID)
   clientId: number;
 
   @ManyToOne(() => Client, (client) => client.projects, { onDelete: 'CASCADE' })

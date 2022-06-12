@@ -4,7 +4,7 @@
 
 type Client {
   email: String!
-  id: Int!
+  id: ID!
   name: String!
   phone: String!
   projects: [Project!]
@@ -17,7 +17,7 @@ input CreateClientInput {
 }
 
 input CreateProjectInput {
-  clientId: Int!
+  clientId: ID!
   description: String!
   status: ProjectStatus
 }
@@ -25,16 +25,16 @@ input CreateProjectInput {
 type Mutation {
   createClient(createClientInput: CreateClientInput!): Client!
   createProject(createProjectInput: CreateProjectInput!): Project!
-  deleteClient(id: Float!): Client!
-  deleteProject(id: Float!): Project!
+  deleteClient(id: ID!): Client!
+  deleteProject(id: ID!): Project!
   updateProject(updateProjectInput: UpdateProjectInput!): Project!
 }
 
 type Project {
   client: Client!
-  clientId: Int!
+  clientId: ID!
   description: String!
-  id: Int!
+  id: ID!
   status: ProjectStatus!
 }
 
@@ -45,15 +45,14 @@ enum ProjectStatus {
 }
 
 type Query {
-  client(id: Float!): Client!
+  client(id: ID!): Client!
   clients: [Client!]!
-  project(id: Float!): Project!
+  project(id: ID!): Project!
   projects: [Project!]!
 }
 
 input UpdateProjectInput {
-  clientId: Int
   description: String
-  id: Int!
+  id: ID!
   status: ProjectStatus
 }
