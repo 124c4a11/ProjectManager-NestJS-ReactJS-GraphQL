@@ -1,3 +1,5 @@
+import { IClient } from './IClient';
+
 export enum ProjectStatus {
   NOT_STARTED = 'Not Started',
   IN_PROGRESS = 'In Progress',
@@ -7,7 +9,8 @@ export enum ProjectStatus {
 export interface IProject {
   id: number;
   name: string;
-  descritpion: string;
+  description: string;
   status: ProjectStatus;
   clientId: number;
+  client: IClient;
 }
