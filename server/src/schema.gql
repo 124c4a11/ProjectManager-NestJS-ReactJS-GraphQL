@@ -37,7 +37,7 @@ type Project {
   description: String!
   id: ID!
   name: String!
-  status: ProjectStatus!
+  status: String!
 }
 
 enum ProjectStatus {

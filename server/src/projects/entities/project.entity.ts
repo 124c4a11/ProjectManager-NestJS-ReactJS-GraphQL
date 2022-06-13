@@ -32,7 +32,7 @@ export class Project {
     enum: ProjectStatus,
     default: ProjectStatus.NOT_STARTED,
   })
-  @Field(() => ProjectStatus)
+  @Field()
   status: ProjectStatus;
 
   @Column()
