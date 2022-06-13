@@ -19,6 +19,7 @@ input CreateClientInput {
 input CreateProjectInput {
   clientId: ID!
   description: String!
+  name: String!
   status: ProjectStatus
 }
 
@@ -35,6 +36,7 @@ type Project {
   clientId: ID!
   description: String!
   id: ID!
+  name: String!
   status: ProjectStatus!
 }
 
@@ -54,5 +56,6 @@ type Query {
 input UpdateProjectInput {
   description: String
   id: ID!
+  name: String
   status: ProjectStatus
 }

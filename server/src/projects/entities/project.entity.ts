@@ -21,6 +21,10 @@ export class Project {
 
   @Column()
   @Field()
+  name: string;
+
+  @Column()
+  @Field()
   description: string;
 
   @Column({

@@ -6,6 +6,10 @@ import { ProjectStatus } from '../entities/project.entity';
 export class CreateProjectInput {
   @IsString()
   @Field()
+  readonly name: string;
+
+  @IsString()
+  @Field()
   readonly description: string;
 
   @IsEnum(ProjectStatus)

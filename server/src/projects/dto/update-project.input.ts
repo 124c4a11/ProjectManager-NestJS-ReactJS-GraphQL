@@ -18,6 +18,11 @@ export class UpdateProjectInput {
   @IsString()
   @IsOptional()
   @Field({ nullable: true })
+  readonly name: string;
+
+  @IsString()
+  @IsOptional()
+  @Field({ nullable: true })
   readonly description: string;
 
   @IsEnum(ProjectStatus)
