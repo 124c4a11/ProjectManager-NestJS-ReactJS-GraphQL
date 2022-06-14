@@ -1,16 +1,12 @@
 import { useQuery } from '@apollo/client';
 
-import { IClient } from '../../interfaces/IClient';
 import { GET_CLIENTS } from '../../graphql/client/client.queries';
+import { IClientsData } from '../../interfaces/IClientsData';
 import { Spinner } from '../Spinner/Spinner';
 import { ClientRow } from './ClientRow';
 
-interface ClientsData {
-  clients: IClient[];
-}
-
 export function Clients(): JSX.Element {
-  const { loading, error, data } = useQuery<ClientsData>(GET_CLIENTS);
+  const { loading, error, data } = useQuery<IClientsData>(GET_CLIENTS);
 
   if (loading) return <Spinner />;
   if (error) return <p>Something Went Wrong!</p>;

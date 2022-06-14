@@ -49,7 +49,7 @@ export function AddClientModal(): JSX.Element {
       >
         <span className="d-flex align-items-center">
           <FaUser className="icon" />
-          <span>Add client</span>
+          <span>Add Client</span>
         </span>
       </button>
 
