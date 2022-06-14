@@ -34,8 +34,14 @@ export class ProjectsService {
   }
 
   async update(updateProjectInput: UpdateProjectInput): Promise<Project> {
-    const project = await this.findOne(updateProjectInput.id);
+    const id = Number(updateProjectInput.id);
 
-    return this.projectRepo.save({ ...project, ...updateProjectInput });
+    const project = await this.findOne(id);
+
+    return this.projectRepo.save({
+      ...project,
+      ...updateProjectInput,
+      id,
+    });
   }
 }
