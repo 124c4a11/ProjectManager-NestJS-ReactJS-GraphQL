@@ -7,13 +7,12 @@ import { CREATE_PROJECT } from '../../graphql/project/project.mutations';
 import { GET_PROJECTS } from '../../graphql/project/project.queries';
 import { IClientsData } from '../../interfaces/IClientsData';
 import { IProject, ProjectStatus } from '../../interfaces/IProject';
-
-type Status = keyof typeof ProjectStatus;
+import { IStatus } from '../../interfaces/IStatus';
 
 export function AddProjectModal(): JSX.Element {
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [status, setStatus] = useState<Status>('NOT_STARTED');
+  const [status, setStatus] = useState<IStatus>('NOT_STARTED');
   const [clientId, setClientId] = useState<string>('');
 
   const { loading, error, data } = useQuery<IClientsData>(GET_CLIENTS);
@@ -117,7 +116,7 @@ export function AddProjectModal(): JSX.Element {
                   <select
                     value={status}
                     className="form-select"
-                    onChange={(e) => setStatus(e.target.value as Status)}
+                    onChange={(e) => setStatus(e.target.value as IStatus)}
                   >
                     <option value="NOT_STARTED">Not Started</option>
                     <option value="IN_PROGRESS">In Progress</option>
