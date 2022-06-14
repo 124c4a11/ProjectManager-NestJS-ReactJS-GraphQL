@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
-import { ClientInfo, Spinner } from '../../components';
+import { ClientInfo, DeleteProjectButton, Spinner } from '../../components';
 import { GET_PROJECT } from '../../graphql/project/project.queries';
 import { IProject } from '../../interfaces/IProject';
 
@@ -34,6 +34,8 @@ export function ProjectPage(): JSX.Element {
           <p className="lead">{project.status}</p>
 
           <ClientInfo client={project.client} />
+
+          <DeleteProjectButton projectId={id!} />
         </div>
       )}
     </>
